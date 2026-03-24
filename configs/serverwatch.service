@@ -1,0 +1,19 @@
+[Unit]
+Description=ServerWatch System Health Monitor
+After=network.target
+
+[Service]
+User=serverwatch
+Group=serverwatch
+ExecStart=/usr/local/bin/serverwatch
+Restart=on-failure
+RestartSec=5s
+ProtectSystem=strict
+ReadWritePaths=/var/log/serverwatch
+NoNewPrivileges=true
+PrivateTmp=true
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
